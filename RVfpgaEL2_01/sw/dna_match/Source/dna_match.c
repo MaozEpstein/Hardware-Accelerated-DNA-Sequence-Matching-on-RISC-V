@@ -34,27 +34,24 @@
 #ifdef USE_ACCELERATOR
 
 /* Memory-mapped registers (base 0x80001300, matches accelerator_regs.sv).   */
-/* The host sends RAW ASCII (4 words/sequence, decoded in hardware).  There   */
-/* are TWO reference buffers (A/B) so the CPU can write the next reference     */
-/* while the core computes the current one (double-buffer / ping-pong).        */
-#define ACCEL_REG_CONTROL   0x80001300u   /* r: {busy, .., done_b, done_a}     */
+/* Idea B: the host sends RAW ASCII; each 16-base sequence is 4 words of 4    */
+/* ASCII bytes, and the accelerator decodes them in hardware.  No software    */
+/* encoding is performed at all.                                              */
+#define ACCEL_REG_CONTROL   0x80001300u   /* w: bit0=GO   r: bit31=DONE        */
 #define ACCEL_REG_QUERY0    0x80001304u   /* query ASCII bytes 0..3            */
-#define ACCEL_REG_REFA0     0x80001314u   /* buffer A: ref ASCII bytes 0..3    */
-#define ACCEL_REG_REFB0     0x80001324u   /* buffer B: ref ASCII bytes 0..3    */
-#define ACCEL_REG_RESULTA   0x80001334u   /* score of the last run on buffer A */
-#define ACCEL_REG_RESULTB   0x80001338u   /* score of the last run on buffer B */
-/* REGg = REG0 + 4*g (g=0..3).  Writing word 3 of a buffer queues a run on it. */
+#define ACCEL_REG_REF0      0x80001314u   /* ref   ASCII bytes 0..3            */
+#define ACCEL_REG_RESULT    0x80001324u   /* best local-alignment score        */
+/* QUERYg = QUERY0 + 4*g , REFg = REF0 + 4*g  (g = 0..3); REF3 write auto-starts */
 
-#define ACCEL_DONE_A        0x00000001u
-#define ACCEL_DONE_B        0x00000002u
+#define ACCEL_DONE_BIT      0x80000000u
 
 #define ACCEL_RD(addr)        (*(volatile unsigned *)(addr))
 #define ACCEL_WR(addr, value) do { (*(volatile unsigned *)(addr)) = (unsigned)(value); } while (0)
 
-/* Send a 16-byte sequence as 4 raw-ASCII words to a buffer's registers.      */
+/* Send a 16-byte sequence as 4 raw-ASCII words to consecutive registers.     */
 /* The sequence stays in its TCM array; we only move the bytes (no encoding). */
-/* Reads are 4-byte aligned (the query/reference arrays are aligned(4)).      */
-/* Writing the 4th word queues a run on that buffer.                          */
+/* Reads are 4-byte aligned (the query/reference arrays are aligned(4)), so    */
+/* these are plain word loads.  Writing the 4th REF word auto-starts the run.  */
 static inline void accel_send4(unsigned base_addr, const char *seq)
 {
     const unsigned *w = (const unsigned *)seq;
@@ -62,6 +59,20 @@ static inline void accel_send4(unsigned base_addr, const char *seq)
     ACCEL_WR(base_addr + 0x4u, w[1]);
     ACCEL_WR(base_addr + 0x8u, w[2]);
     ACCEL_WR(base_addr + 0xCu, w[3]);
+}
+
+/* Offload one reference to the accelerator and return its score.            */
+/* The query is loaded once by the caller (it is stationary in the array).   */
+static inline int smith_waterman_accel(const char *ref)
+{
+    accel_send4(ACCEL_REG_REF0, ref);        /* 4 raw words; REF3 auto-starts  */
+
+    /* polling DONE is required: accelerator_wb acks a read in ~4 cycles while */
+    /* the systolic run takes longer, so an immediate read would be partial.  */
+    while ((ACCEL_RD(ACCEL_REG_CONTROL) & ACCEL_DONE_BIT) == 0)
+        ;
+
+    return (int)ACCEL_RD(ACCEL_REG_RESULT);
 }
 
 #endif /* USE_ACCELERATOR */
@@ -184,26 +195,13 @@ int main(void)
 
 
 #ifdef USE_ACCELERATOR
-    /* Double-buffer pipeline: load the query once, prime buffer A with the    */
-    /* first reference, then for each reference write the NEXT one into the     */
-    /* opposite buffer (which overlaps the current run and provides the delay   */
-    /* that makes the poll-free result read safe) and read the current score.   */
-    /* Only the last reference - which has no following prefetch - is polled.   */
+    /* Load the stationary query once (4 raw words), then stream each         */
+    /* reference through the systolic accelerator.                            */
     accel_send4(ACCEL_REG_QUERY0, query);
-    accel_send4(ACCEL_REG_REFA0, references[0]);     /* queue run 0 on buffer A */
 
     for(int i=0;i<NUM_OF_REFS;i++)
     {
-        if(i+1 < NUM_OF_REFS)
-            accel_send4(((i+1) & 1) ? ACCEL_REG_REFB0 : ACCEL_REG_REFA0,
-                        references[i+1]);
-        else
-            while((ACCEL_RD(ACCEL_REG_CONTROL)
-                   & ((i & 1) ? ACCEL_DONE_B : ACCEL_DONE_A)) == 0)
-                ;                                    /* poll only the last one  */
-
-        score[i] = (int)ACCEL_RD((i & 1) ? ACCEL_REG_RESULTB
-                                         : ACCEL_REG_RESULTA);
+        score[i] = smith_waterman_accel(references[i]);
     }
 #else
     for(int i=0;i<NUM_OF_REFS;i++)
