@@ -48,17 +48,36 @@
 /* up to 16 bases per 32-bit word.  The input sequences stay in the TCM array;*/
 /* only their encoding is built.                                              */
 /*                                                                            */
-/* Branchless mapping: (c >> 1) & 3 sends A/C/G/T -> 0/1/3/2.  This replaces a */
-/* 4-way switch (the dominant ~86% of run time at -O0).  The mapping value is  */
-/* irrelevant: the accelerator's PE only tests query==reference for equality,  */
-/* so ANY bijection gives identical match/mismatch decisions and identical     */
-/* scores - as long as query and references use this same encoder.             */
+/* Branchless mapping: (c >> 1) & 3 sends A/C/G/T -> 0/1/3/2.  The mapping value */
+/* is irrelevant: the accelerator's PE only tests query==reference for equality, */
+/* so ANY bijection gives identical match/mismatch decisions and identical       */
+/* scores - as long as query and references use this same encoder.               */
+/*                                                                              */
+/* Word-at-a-time: process 4 bases per iteration with parallel bit ops (4 loop  */
+/* passes instead of 16) to cut the -O0 per-character overhead, which dominated  */
+/* run time.  Bytes are read individually (p[k]) so there is no unaligned 32-bit */
+/* load from the char array.  Inputs are 16 bases.  The produced packed word is  */
+/* bit-for-bit identical to the per-character version (base j -> bits [2j]).     */
 static inline unsigned dna_encode(const char *s)
 {
     unsigned packed = 0;
 
-    for (int k = 0; s[k] != '\0'; k++)
-        packed |= (unsigned)((s[k] >> 1) & 3) << (2 * k);
+    for (int g = 0; g < 4; g++)
+    {
+        const unsigned char *p = (const unsigned char *)(s + 4 * g);
+
+        /* assemble 4 ASCII bytes, then map all four with (c>>1)&3 in parallel */
+        unsigned w     = p[0] | (p[1] << 8) | (p[2] << 16) | (p[3] << 24);
+        unsigned codes = (w >> 1) & 0x03030303u;       /* one code per byte lane */
+
+        /* compress the 4 lanes (bits 0,8,16,24) into a packed nibble-pair byte  */
+        unsigned eight = (codes         & 0x03u)
+                       | ((codes >> 6)  & 0x0Cu)
+                       | ((codes >> 12) & 0x30u)
+                       | ((codes >> 18) & 0xC0u);
+
+        packed |= eight << (8 * g);                    /* bases 4g..4g+3 -> [8g +: 8] */
+    }
 
     return packed;
 }
