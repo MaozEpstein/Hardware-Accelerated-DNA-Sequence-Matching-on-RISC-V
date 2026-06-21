@@ -22,8 +22,6 @@ module accelerator_regs
 	input	logic					wb_re_i,
 	output	logic	[31:0]			reg_a,
 	output	logic	[31:0]			reg_b,
-	output	logic	[31:0]			reg_c,
-	output	logic	[31:0]			reg_d,
 	input	logic	[31:0]			reg_result,
 	input	logic					done,
 	output	logic					go
@@ -37,8 +35,6 @@ begin
 		`ACCELERATOR_REG_CONTROL	:	wb_dat_o = {done,30'h0,go};
 		`ACCELERATOR_REG_A		:	wb_dat_o = reg_a;
 		`ACCELERATOR_REG_B		:	wb_dat_o = reg_b;
-		`ACCELERATOR_REG_C		:	wb_dat_o = reg_c;
-		`ACCELERATOR_REG_D		:	wb_dat_o = reg_d;
 		`ACCELERATOR_REG_RESULT	:	wb_dat_o = reg_result;
 		default					:	wb_dat_o = 32'b0; // ??
 	endcase // 
@@ -61,8 +57,6 @@ end //
 		if (wb_rst_i)	begin
 			reg_a			<= '0;
 			reg_b			<= '0;
-			reg_c			<= '0;
-			reg_d			<= '0;
 			go				<= 1'b0;
         end
 		else begin
@@ -76,8 +70,6 @@ end //
 												reg_b	<= wb_dat_i[31:0];
 												go		<= 1'b1; // auto-start the run (3.1)
 											end
-				`ACCELERATOR_REG_C		:	reg_c		<= wb_dat_i[31:0];
-				`ACCELERATOR_REG_D		:	reg_d		<= wb_dat_i[31:0];
 				`ACCELERATOR_REG_CONTROL	:	go			<= wb_dat_i[0]; // explicit start still supported
 				endcase // case(wb_addr_i)
 			end

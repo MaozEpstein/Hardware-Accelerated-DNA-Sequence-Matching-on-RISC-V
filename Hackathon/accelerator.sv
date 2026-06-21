@@ -114,8 +114,6 @@ module accelerator
     input   logic                 wb_rst_i,
     input   logic unsigned [31:0] reg_a,    // query_packed
     input   logic unsigned [31:0] reg_b,    // ref_packed
-    input   logic unsigned [31:0] reg_c,    // reserved
-    input   logic unsigned [31:0] reg_d,    // reserved
     input   logic                 go,
     output  logic                 done,
     output  logic unsigned [31:0] reg_result
@@ -126,9 +124,6 @@ module accelerator
     localparam int RUN_CYCLES = QLEN + REFLEN + 2;
     localparam int CW = $clog2(RUN_CYCLES + 1);
     localparam signed [W-1:0] NEG_INF = -(1 <<< (W-1));
-
-    // keep reserved inputs from being optimization-pruned warnings
-    wire _unused = &{1'b0, reg_c, reg_d};
 
     // synchronous, active-high reset for the internal logic
     logic rst;
