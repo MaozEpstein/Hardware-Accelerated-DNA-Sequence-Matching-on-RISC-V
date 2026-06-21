@@ -1,38 +1,29 @@
 /*
-* Wishbone BFM testbench - DNA Smith-Waterman (Affine-Gap) accelerator
+* Wishbone BFM testbench - DNA Smith-Waterman accelerator (double-buffer)
 *
-* Idea B: the host sends RAW ASCII (no encoding).  Each 16-base sequence is
-* 4 words of 4 ASCII bytes.  Load the query once (QUERY0..3), then for each
-* reference write REF0..3 (REF3 auto-starts), poll DONE, read RESULT and check
-* it against the expected score from dna_match.c.
-*
-* Raw-ASCII word literals were pre-computed (little-endian: byte k of the
-* sequence sits in bits [8k +: 8] of word k/4).
+* Pipelined / ping-pong flow:
+*   - load the query once (QUERY0..3, raw ASCII)
+*   - send reference 0 into buffer A
+*   - then for each i: prefetch reference i+1 into the OTHER buffer while the
+*     core runs reference i, and read reference i's score from RESULT_A/RESULT_B
+*     by parity - NO polling (the prefetch writes guarantee the run finished).
+*   Hardware auto-chains: finishing a run starts the other pending buffer.
 */
 
-`define TB_REG_CONTROL  32'h00000000
-`define TB_REG_QUERY0   32'h00000004
-`define TB_REG_QUERY1   32'h00000008
-`define TB_REG_QUERY2   32'h0000000C
-`define TB_REG_QUERY3   32'h00000010
-`define TB_REG_REF0     32'h00000014
-`define TB_REG_REF1     32'h00000018
-`define TB_REG_REF2     32'h0000001C
-`define TB_REG_REF3     32'h00000020
-`define TB_REG_RESULT   32'h00000024
+`define TB_CONTROL   32'h00000000
+`define TB_QUERY0    32'h00000004
+`define TB_REFA0     32'h00000014
+`define TB_REFB0     32'h00000024
+`define TB_RESULTA   32'h00000034
+`define TB_RESULTB   32'h00000038
 
-`define DONE_BIT        32'h80000000
-
-`define NUM_REFS        8
+`define NUM_REFS     8
 
 module wishbone_accelerator_tb;
 `include "wishbone_accelerator_tb_include.svh"
 
-   // query "ACGTCGTACGTACGTA" as 4 raw-ASCII words
-   logic [31:0] q_w [0:3];
-
-   // references (raw-ASCII words) and their expected best local-alignment scores
-   logic [31:0] ref_w     [0:`NUM_REFS-1][0:3];
+   logic [31:0] q_w   [0:3];
+   logic [31:0] ref_w [0:`NUM_REFS-1][0:3];
    integer      exp_score [0:`NUM_REFS-1];
 
    integer i;
@@ -56,11 +47,33 @@ module wishbone_accelerator_tb;
        .int_o    (wb_s2m_inta )
    );
 
+   // Model real-hardware per-write bus latency (~42 cycles through the
+   // AXI->Wishbone bridge).  The simple BFM acks in ~4 cycles, which is far
+   // faster than the FPGA and would not let the systolic run (~36 cycles) hide
+   // under the next reference's writes.  On real hardware 4 writes (~168 cyc)
+   // comfortably exceed one run, so the pipeline is safe; here we re-create
+   // that margin so Icarus exercises the same logic.
+   task slow_write(input [31:0] addr, input [31:0] data);
+   begin
+       wb_write(addr, data);
+       repeat (30) @(posedge wb_clk);
+   end
+   endtask
+
+   // send the 4 raw-ASCII words of reference index k to a buffer base address
+   task send_ref(input integer k, input [31:0] base);
+   begin
+       slow_write(base + 32'h0, ref_w[k][0]);
+       slow_write(base + 32'h4, ref_w[k][1]);
+       slow_write(base + 32'h8, ref_w[k][2]);
+       slow_write(base + 32'hC, ref_w[k][3]);
+   end
+   endtask
+
    initial begin
        // query "ACGTCGTACGTACGTA"
        q_w[0]=32'h54474341; q_w[1]=32'h41544743; q_w[2]=32'h41544743; q_w[3]=32'h41544743;
 
-       // references (raw ASCII) + expected scores
        ref_w[0][0]=32'h54474341; ref_w[0][1]=32'h54474341; ref_w[0][2]=32'h54474341; ref_w[0][3]=32'h54474341; exp_score[0]=26; // ACGTACGTACGTACGT
        ref_w[1][0]=32'h54474341; ref_w[1][1]=32'h54474354; ref_w[1][2]=32'h54474341; ref_w[1][3]=32'h54474341; exp_score[1]=26; // ACGTTCGTACGTACGT
        ref_w[2][0]=32'h54474341; ref_w[2][1]=32'h47474341; ref_w[2][2]=32'h54474341; ref_w[2][3]=32'h54474341; exp_score[2]=23; // ACGTACGGACGTACGT
@@ -71,26 +84,31 @@ module wishbone_accelerator_tb;
        ref_w[7][0]=32'h54474341; ref_w[7][1]=32'h54474341; ref_w[7][2]=32'h54474347; ref_w[7][3]=32'h54474341; exp_score[7]=23; // ACGTACGTGCGTACGT
 
        errors = 0;
-       $display("==== DNA Smith-Waterman accelerator test (Idea B: raw ASCII) ====");
+       $display("==== DNA accelerator test (double-buffer / ping-pong) ====");
 
-       // 1) load the query once (4 raw words)
-       wb_write(`TB_REG_QUERY0, q_w[0]);
-       wb_write(`TB_REG_QUERY1, q_w[1]);
-       wb_write(`TB_REG_QUERY2, q_w[2]);
-       wb_write(`TB_REG_QUERY3, q_w[3]);
+       // load the query once
+       wb_write(`TB_QUERY0 + 32'h0, q_w[0]);
+       wb_write(`TB_QUERY0 + 32'h4, q_w[1]);
+       wb_write(`TB_QUERY0 + 32'h8, q_w[2]);
+       wb_write(`TB_QUERY0 + 32'hC, q_w[3]);
 
-       // 2) per reference: write 4 raw words (REF3 auto-starts), poll DONE, read
+       // prime the pipeline: reference 0 -> buffer A
+       send_ref(0, `TB_REFA0);
+
        for (i = 0; i < `NUM_REFS; i = i + 1) begin
-           wb_write(`TB_REG_REF0, ref_w[i][0]);
-           wb_write(`TB_REG_REF1, ref_w[i][1]);
-           wb_write(`TB_REG_REF2, ref_w[i][2]);
-           wb_write(`TB_REG_REF3, ref_w[i][3]);   // auto-starts the run
+           // prefetch the next reference into the opposite buffer; its writes
+           // overlap the current run and provide the delay that makes the
+           // poll-free read of the current result safe.
+           if (i + 1 < `NUM_REFS)
+               send_ref(i + 1, ((i + 1) & 1) ? `TB_REFB0 : `TB_REFA0);
+           else
+               // the LAST reference has no following prefetch: poll its done
+               // flag once (1 transaction) before reading - the only poll left.
+               do wb_read(`TB_CONTROL);
+               while ((wb_s2m_data & ((i & 1) ? 32'h2 : 32'h1)) == 0);
 
-           do begin
-               wb_read(`TB_REG_CONTROL);
-           end while ((wb_s2m_data & `DONE_BIT) == 0);
-
-           wb_read(`TB_REG_RESULT);
+           // read this reference's score by buffer parity
+           wb_read((i & 1) ? `TB_RESULTB : `TB_RESULTA);
            got = wb_s2m_data;
 
            if (got === exp_score[i])
