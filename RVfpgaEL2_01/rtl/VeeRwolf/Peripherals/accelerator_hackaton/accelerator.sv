@@ -13,7 +13,6 @@
 //      reg_a  = query_packed   : 16 query bases, 2 bits each  (loaded once)
 //      reg_b  = ref_packed     : 16 reference bases, 2 bits each
 //      go     = start a run    ; done = result ready ; reg_result = best score
-//      reg_c / reg_d           : reserved (future: parallel references)
 //
 //  Algorithm (matches dna_match.c exactly), W-bit signed saturating math:
 //      s      = (q==r) ? +2 : -1

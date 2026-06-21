@@ -39,7 +39,6 @@
 #define ACCEL_REG_REF       0x80001308u   /* reg_b: 16 ref   bases, 2b each   */
 #define ACCEL_REG_RESULT    0x80001314u   /* best local-alignment score       */
 
-#define ACCEL_GO_BIT        0x00000001u
 #define ACCEL_DONE_BIT      0x80000000u
 
 #define ACCEL_RD(addr)        (*(volatile unsigned *)(addr))
@@ -98,16 +97,6 @@ static int D[MAX_LEN][MAX_LEN];
 static inline int max2(int a, int b)
 {
     return (a > b) ? a : b;
-}
-
-static inline int max3(int a, int b, int c)
-{
-    int m = a;
-
-    if(b > m) m = b;
-    if(c > m) m = c;
-
-    return m;
 }
 
 static inline int max4(int a,int b,int c,int d)

@@ -11,12 +11,9 @@
 
 `define TB_REG_CONTROL  32'h00000000
 `define TB_REG_A        32'h00000004   // query_packed
-`define TB_REG_B        32'h00000008   // ref_packed
-`define TB_REG_C        32'h0000000C
-`define TB_REG_D        32'h00000010
+`define TB_REG_B        32'h00000008   // ref_packed (write auto-starts the run)
 `define TB_REG_RESULT   32'h00000014
 
-`define GO_BIT          32'h00000001
 `define DONE_BIT        32'h80000000
 
 `define NUM_REFS        8

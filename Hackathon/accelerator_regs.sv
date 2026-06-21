@@ -2,12 +2,10 @@
 // Register addresses
 // Provided AS IS without any warranty of any kind nor EXPLICIT nor IMPLIED
 
-`define ACCELERATOR_REG_CONTROL		8'h0	//
-`define ACCELERATOR_REG_A			8'h4	// 
-`define ACCELERATOR_REG_B			8'h8	// 
-`define ACCELERATOR_REG_C			8'hc	//
-`define ACCELERATOR_REG_D			8'h10	// 
-`define ACCELERATOR_REG_RESULT		8'h14	// 
+`define ACCELERATOR_REG_CONTROL		8'h0	// bit0=go (w) ; bit31=done (r)
+`define ACCELERATOR_REG_A			8'h4	// query_packed (16 bases x 2b)
+`define ACCELERATOR_REG_B			8'h8	// ref_packed   (16 bases x 2b), write auto-starts
+`define ACCELERATOR_REG_RESULT		8'h14	// best local-alignment score
 
 
 module accelerator_regs
