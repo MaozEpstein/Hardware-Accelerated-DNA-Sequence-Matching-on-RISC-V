@@ -47,11 +47,16 @@ end //
 //
 //   WRITES AND RESETS   //
 //
-	// NOTE (Hackathon): the auto-clear of "go" and a CONTROL write now live in
-	// the SAME sequential block so that a CONTROL write takes priority over the
-	// auto-clear (the later non-blocking assignment wins).  This lets software
-	// start the next run while "done" is still held high by the accelerator,
-	// keeping the done flag reliably pollable between references.
+	// NOTE (Hackathon): the auto-clear of "go" and the register writes live in
+	// the SAME sequential block so that a write that sets "go" takes priority
+	// over the auto-clear (the later non-blocking assignment wins).  This lets
+	// software start the next run while "done" is still held high, keeping the
+	// done flag reliably pollable between references.
+	//
+	// Layer 3.1 (auto-start): writing the reference register (reg_b) also
+	// raises "go" in the same cycle, so software no longer needs a separate
+	// CONTROL/GO write to launch a run -- one less Wishbone access per
+	// reference.  The explicit CONTROL/GO write is still supported.
 	always_ff @(posedge clk or posedge wb_rst_i) begin
 		if (wb_rst_i)	begin
 			reg_a			<= '0;
@@ -67,10 +72,13 @@ end //
 			if (wb_we_i) begin
 				case (wb_addr_i)
 				`ACCELERATOR_REG_A		:	reg_a		<= wb_dat_i[31:0];
-				`ACCELERATOR_REG_B		:	reg_b		<= wb_dat_i[31:0];
+				`ACCELERATOR_REG_B		:	begin
+												reg_b	<= wb_dat_i[31:0];
+												go		<= 1'b1; // auto-start the run (3.1)
+											end
 				`ACCELERATOR_REG_C		:	reg_c		<= wb_dat_i[31:0];
 				`ACCELERATOR_REG_D		:	reg_d		<= wb_dat_i[31:0];
-				`ACCELERATOR_REG_CONTROL	:	go			<= wb_dat_i[0]; // wins over auto-clear
+				`ACCELERATOR_REG_CONTROL	:	go			<= wb_dat_i[0]; // explicit start still supported
 				endcase // case(wb_addr_i)
 			end
 		end

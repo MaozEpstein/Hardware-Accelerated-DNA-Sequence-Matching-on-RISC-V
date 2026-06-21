@@ -71,8 +71,7 @@ module wishbone_accelerator_tb;
 
        // 2) for each reference: write, trigger, poll DONE, read score
        for (i = 0; i < `NUM_REFS; i = i + 1) begin
-           wb_write(`TB_REG_B, ref_packed[i]);
-           wb_write(`TB_REG_CONTROL, `GO_BIT);
+           wb_write(`TB_REG_B, ref_packed[i]);   // writing REF auto-starts the run (3.1)
 
            do begin
                wb_read(`TB_REG_CONTROL);

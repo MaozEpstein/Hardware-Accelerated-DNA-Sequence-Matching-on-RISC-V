@@ -74,11 +74,17 @@ static inline unsigned dna_encode(const char *s)
 /* The query is loaded once by the caller (it is stationary in the array).  */
 static inline int smith_waterman_accel(const char *ref)
 {
-    ACCEL_WR(ACCEL_REG_REF, dna_encode(ref));    /* stream this reference     */
-    ACCEL_WR(ACCEL_REG_CONTROL, ACCEL_GO_BIT);   /* trigger a run             */
+    /* Layer 3.1 (auto-start): writing the reference register launches the run */
+    /* automatically, so the separate CONTROL/GO write is no longer needed.    */
+    /*                                                                         */
+    /* NOTE: polling DONE is required.  accelerator_wb acks a read in ~4 cycles */
+    /* and reg_result is read combinationally, so reading without polling would */
+    /* return a partial (mid-computation) score.  Layer 3.2 (poll-free) was     */
+    /* reverted for this reason.                                                */
+    ACCEL_WR(ACCEL_REG_REF, dna_encode(ref));    /* write ref -> auto-start    */
 
     while ((ACCEL_RD(ACCEL_REG_CONTROL) & ACCEL_DONE_BIT) == 0)
-        ;                                        /* poll until DONE           */
+        ;                                        /* poll until DONE            */
 
     return (int)ACCEL_RD(ACCEL_REG_RESULT);
 }
