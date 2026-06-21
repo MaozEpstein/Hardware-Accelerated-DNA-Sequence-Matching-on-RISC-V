@@ -1,18 +1,25 @@
 /*
 * Wishbone BFM testbench - DNA Smith-Waterman (Affine-Gap) accelerator
 *
-* Loads the query once (reg_a), then streams each of the 8 references
-* (reg_b), triggers a run via the GO bit, polls the DONE bit, reads the
-* RESULT, and checks it against the expected score from dna_match.c.
+* Idea B: the host sends RAW ASCII (no encoding).  Each 16-base sequence is
+* 4 words of 4 ASCII bytes.  Load the query once (QUERY0..3), then for each
+* reference write REF0..3 (REF3 auto-starts), poll DONE, read RESULT and check
+* it against the expected score from dna_match.c.
 *
-* 2-bit base encoding A=00,C=01,G=10,T=11; base k in bits [2k +: 2].
-* Packed values pre-computed (see comments) so the TB needs no string logic.
+* Raw-ASCII word literals were pre-computed (little-endian: byte k of the
+* sequence sits in bits [8k +: 8] of word k/4).
 */
 
 `define TB_REG_CONTROL  32'h00000000
-`define TB_REG_A        32'h00000004   // query_packed
-`define TB_REG_B        32'h00000008   // ref_packed (write auto-starts the run)
-`define TB_REG_RESULT   32'h00000014
+`define TB_REG_QUERY0   32'h00000004
+`define TB_REG_QUERY1   32'h00000008
+`define TB_REG_QUERY2   32'h0000000C
+`define TB_REG_QUERY3   32'h00000010
+`define TB_REG_REF0     32'h00000014
+`define TB_REG_REF1     32'h00000018
+`define TB_REG_REF2     32'h0000001C
+`define TB_REG_REF3     32'h00000020
+`define TB_REG_RESULT   32'h00000024
 
 `define DONE_BIT        32'h80000000
 
@@ -21,12 +28,12 @@
 module wishbone_accelerator_tb;
 `include "wishbone_accelerator_tb_include.svh"
 
-   // query  "ACGTCGTACGTACGTA"
-   localparam [31:0] QUERY = 32'h393939E4;
+   // query "ACGTCGTACGTACGTA" as 4 raw-ASCII words
+   logic [31:0] q_w [0:3];
 
-   // references and their expected best local-alignment scores
-   logic [31:0] ref_packed [0:`NUM_REFS-1];
-   integer      exp_score  [0:`NUM_REFS-1];
+   // references (raw-ASCII words) and their expected best local-alignment scores
+   logic [31:0] ref_w     [0:`NUM_REFS-1][0:3];
+   integer      exp_score [0:`NUM_REFS-1];
 
    integer i;
    integer got;
@@ -50,25 +57,34 @@ module wishbone_accelerator_tb;
    );
 
    initial begin
-       // reference dataset (packed) and expected scores
-       ref_packed[0] = 32'hE4E4E4E4;  exp_score[0] = 26; // ACGTACGTACGTACGT
-       ref_packed[1] = 32'hE4E4E7E4;  exp_score[1] = 26; // ACGTTCGTACGTACGT
-       ref_packed[2] = 32'hE4E4A4E4;  exp_score[2] = 23; // ACGTACGGACGTACGT
-       ref_packed[3] = 32'hFFFFFFFF;  exp_score[3] =  2; // TTTTTTTTTTTTTTTT
-       ref_packed[4] = 32'hE4E7E4E4;  exp_score[4] = 23; // ACGTACGTTCGTACGT
-       ref_packed[5] = 32'h24E4E4E4;  exp_score[5] = 24; // ACGTACGTACGTACGA
-       ref_packed[6] = 32'hE4E4EFE4;  exp_score[6] = 23; // ACGTTTGTACGTACGT
-       ref_packed[7] = 32'hE4E6E4E4;  exp_score[7] = 23; // ACGTACGTGCGTACGT
+       // query "ACGTCGTACGTACGTA"
+       q_w[0]=32'h54474341; q_w[1]=32'h41544743; q_w[2]=32'h41544743; q_w[3]=32'h41544743;
+
+       // references (raw ASCII) + expected scores
+       ref_w[0][0]=32'h54474341; ref_w[0][1]=32'h54474341; ref_w[0][2]=32'h54474341; ref_w[0][3]=32'h54474341; exp_score[0]=26; // ACGTACGTACGTACGT
+       ref_w[1][0]=32'h54474341; ref_w[1][1]=32'h54474354; ref_w[1][2]=32'h54474341; ref_w[1][3]=32'h54474341; exp_score[1]=26; // ACGTTCGTACGTACGT
+       ref_w[2][0]=32'h54474341; ref_w[2][1]=32'h47474341; ref_w[2][2]=32'h54474341; ref_w[2][3]=32'h54474341; exp_score[2]=23; // ACGTACGGACGTACGT
+       ref_w[3][0]=32'h54545454; ref_w[3][1]=32'h54545454; ref_w[3][2]=32'h54545454; ref_w[3][3]=32'h54545454; exp_score[3]= 2; // TTTTTTTTTTTTTTTT
+       ref_w[4][0]=32'h54474341; ref_w[4][1]=32'h54474341; ref_w[4][2]=32'h54474354; ref_w[4][3]=32'h54474341; exp_score[4]=23; // ACGTACGTTCGTACGT
+       ref_w[5][0]=32'h54474341; ref_w[5][1]=32'h54474341; ref_w[5][2]=32'h54474341; ref_w[5][3]=32'h41474341; exp_score[5]=24; // ACGTACGTACGTACGA
+       ref_w[6][0]=32'h54474341; ref_w[6][1]=32'h54475454; ref_w[6][2]=32'h54474341; ref_w[6][3]=32'h54474341; exp_score[6]=23; // ACGTTTGTACGTACGT
+       ref_w[7][0]=32'h54474341; ref_w[7][1]=32'h54474341; ref_w[7][2]=32'h54474347; ref_w[7][3]=32'h54474341; exp_score[7]=23; // ACGTACGTGCGTACGT
 
        errors = 0;
-       $display("==== DNA Smith-Waterman accelerator test ====");
+       $display("==== DNA Smith-Waterman accelerator test (Idea B: raw ASCII) ====");
 
-       // 1) load the query once
-       wb_write(`TB_REG_A, QUERY);
+       // 1) load the query once (4 raw words)
+       wb_write(`TB_REG_QUERY0, q_w[0]);
+       wb_write(`TB_REG_QUERY1, q_w[1]);
+       wb_write(`TB_REG_QUERY2, q_w[2]);
+       wb_write(`TB_REG_QUERY3, q_w[3]);
 
-       // 2) for each reference: write, trigger, poll DONE, read score
+       // 2) per reference: write 4 raw words (REF3 auto-starts), poll DONE, read
        for (i = 0; i < `NUM_REFS; i = i + 1) begin
-           wb_write(`TB_REG_B, ref_packed[i]);   // writing REF auto-starts the run (3.1)
+           wb_write(`TB_REG_REF0, ref_w[i][0]);
+           wb_write(`TB_REG_REF1, ref_w[i][1]);
+           wb_write(`TB_REG_REF2, ref_w[i][2]);
+           wb_write(`TB_REG_REF3, ref_w[i][3]);   // auto-starts the run
 
            do begin
                wb_read(`TB_REG_CONTROL);
