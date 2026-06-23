@@ -97,8 +97,8 @@ Penalties: `MATCH=+2`, `MISMATCH=-1`, `GAP_OPEN=-4`, `GAP_EXT=-1`.
 Instead of computing the DP matrix cell-by-cell, **16 Processing Elements (PEs)** — one per query base — are chained together. The query is loaded once and held stationary; reference bases stream through one per cycle. Each anti-diagonal of the matrix is computed in parallel, so the whole alignment finishes in `QLEN + REFLEN + 2` cycles instead of `QLEN × REFLEN` iterations.
 
 <div align="center">
-<img src="docs/images/systolic_array.png" alt="16-PE systolic array with control FSM, reference feeder and max-reduce" width="640"/>
-<br/><em>16 chained PEs · a control FSM · a reference feeder · and a combinational <code>max_reduce</code> for the global best score.</em>
+<img src="docs/images/systolic_array_detailed.png" alt="Elaborated schematic of the 16-PE systolic array: control_sm, ref_feeder, two rows of PEs and max_reduce" width="100%"/>
+<br/><em>Elaborated RTL schematic — 16 chained PEs (two rows of 8) fed by <code>control_sm</code> and <code>ref_feeder</code>, with a combinational <code>max_reduce</code> producing the global best score.</em>
 </div>
 
 ### Inside a single Processing Element
