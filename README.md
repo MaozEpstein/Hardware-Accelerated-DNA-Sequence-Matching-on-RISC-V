@@ -57,12 +57,24 @@ Every optimization was measured on real hardware. Each step attacked the next bo
 | 4 | **ASCII decoding moved into hardware** (zero SW encode) | — | — |
 | 5 | **Latency minimization** (removed redundant pipeline registers) | **2,162** | **×535** |
 
+**The big picture — software vs. hardware:** moving the core into the systolic array alone collapses the workload by ~78×, which is why everything after it looks tiny on a linear axis.
+
 ```mermaid
 xychart-beta
-    title "Cycle count per milestone (log scale story: 1.1M → 2.1K)"
-    x-axis ["Baseline", "Systolic", "Branchless", "Word-at-a-time", "Final"]
+    title "Step 1: the systolic array crushes the baseline (×78)"
+    x-axis ["Baseline (software)", "Systolic array (HW)"]
     y-axis "Cycles" 0 --> 1200000
-    bar [1157276, 14735, 11369, 5069, 2162]
+    bar [1157276, 14735]
+```
+
+**Zooming in — the optimizations didn't stop there.** After the array, four more rounds of tuning squeezed it down by another **~6.8×**, from 14,735 to the final 2,162 cycles:
+
+```mermaid
+xychart-beta
+    title "Steps 2–5: from 14,735 down to 2,162 cycles (another ×6.8)"
+    x-axis ["Systolic", "Branchless", "Word-at-a-time", "Final (HW decode + latency)"]
+    y-axis "Cycles" 0 --> 16000
+    bar [14735, 11369, 5069, 2162]
 ```
 
 ---
