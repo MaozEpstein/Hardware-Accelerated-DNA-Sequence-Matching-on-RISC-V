@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    // מערך בגודל 12 כדי להכיל את 2 האיברים הראשונים ועוד 10 איברים שיחושבו
+    int fib[12];
+    
+    // אתחול שני האיברים הראשונים לפי הנתונים
+    fib[0] = 0;
+    fib[1] = 1;
+    
+    // הדפסת האיברים הראשונים
+    printf("Fibonacci Sequence:\n");
+    printf("a[0] = %d\n", fib[0]);
+    printf("a[1] = %d\n", fib[1]);
+    
+    // חישוב 10 האיברים הבאים בסדרה
+    for (int i = 2; i < 12; i++) {
+        fib[i] = fib[i-1] + fib[i-2];
+        printf("a[%d] = %d\n", i, fib[i]);
+    }
+    
+    printf("\n");
+    
+    // הדפסת פרטי הצוות
+    int num_students = 2;
+    printf("Number of students in the team: %d\n", num_students);
+    printf("Team members: Maoz Epstein, Erez\n");
+    
+    return 0;
+}

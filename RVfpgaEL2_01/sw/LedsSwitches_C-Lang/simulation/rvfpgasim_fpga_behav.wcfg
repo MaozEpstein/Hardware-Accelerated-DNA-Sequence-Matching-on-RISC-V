@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:\ruppin\RVFPGA\RVfpga_EL2\RVfpgaEL2_01\sw\LedsSwitches_C-Lang\simulation\rvfpgasim_fpga_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axi_pkg" />
+            <top_module name="el2_pkg" />
+            <top_module name="glbl" />
+            <top_module name="ibex_pkg" />
+            <top_module name="rvfpgasim_fpga" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="44.510000 us"></ZoomStartTime>
+      <ZoomEndTime time="51.930001 us"></ZoomEndTime>
+      <Cursor1Time time="45.890000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="284"></NameColumnWidth>
+      <ValueColumnWidth column_width="96"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="213" />
+   <wvobject type="divider" fp_name="divider827">
+      <obj_property name="label">IBEX DECODER</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/rst_ni" type="logic">
+      <obj_property name="ElementShortName">rst_ni</obj_property>
+      <obj_property name="ObjectShortName">rst_ni</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/pc" type="array">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/instr_rdata_i" type="array">
+      <obj_property name="ElementShortName">instr_rdata_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_rdata_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/asm" type="array">
+      <obj_property name="ElementShortName">asm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">asm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/rf_we" type="logic">
+      <obj_property name="ElementShortName">rf_we</obj_property>
+      <obj_property name="ObjectShortName">rf_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/rf_ren_a_o" type="logic">
+      <obj_property name="ElementShortName">rf_ren_a_o</obj_property>
+      <obj_property name="ObjectShortName">rf_ren_a_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/rf_ren_b_o" type="logic">
+      <obj_property name="ElementShortName">rf_ren_b_o</obj_property>
+      <obj_property name="ObjectShortName">rf_ren_b_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/instr_rs1" type="array">
+      <obj_property name="ElementShortName">instr_rs1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_rs1[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/instr_rs2" type="array">
+      <obj_property name="ElementShortName">instr_rs2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_rs2[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/instr_rs3" type="array">
+      <obj_property name="ElementShortName">instr_rs3[4:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_rs3[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/instr_rd" type="array">
+      <obj_property name="ElementShortName">instr_rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_rd[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/RS1" type="array">
+      <obj_property name="ElementShortName">RS1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RS1[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/RS2" type="array">
+      <obj_property name="ElementShortName">RS2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RS2[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/RS3" type="array">
+      <obj_property name="ElementShortName">RS3[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RS3[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/RD" type="array">
+      <obj_property name="ElementShortName">RD[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RD[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_i_type_o" type="array">
+      <obj_property name="ElementShortName">imm_i_type_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_i_type_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_s_type_o" type="array">
+      <obj_property name="ElementShortName">imm_s_type_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_s_type_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_b_type_o" type="array">
+      <obj_property name="ElementShortName">imm_b_type_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_b_type_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_u_type_o" type="array">
+      <obj_property name="ElementShortName">imm_u_type_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_u_type_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_j_type_o" type="array">
+      <obj_property name="ElementShortName">imm_j_type_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_j_type_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/multdiv_operator_o" type="array">
+      <obj_property name="ElementShortName">multdiv_operator_o[1:0]</obj_property>
+      <obj_property name="ObjectShortName">multdiv_operator_o[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/csr_op" type="array">
+      <obj_property name="ElementShortName">csr_op[1:0]</obj_property>
+      <obj_property name="ObjectShortName">csr_op[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/csr_access_o" type="logic">
+      <obj_property name="ElementShortName">csr_access_o</obj_property>
+      <obj_property name="ObjectShortName">csr_access_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[6:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/jump_in_dec_o" type="logic">
+      <obj_property name="ElementShortName">jump_in_dec_o</obj_property>
+      <obj_property name="ObjectShortName">jump_in_dec_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/branch_in_dec_o" type="logic">
+      <obj_property name="ElementShortName">branch_in_dec_o</obj_property>
+      <obj_property name="ObjectShortName">branch_in_dec_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/mult_en_o" type="logic">
+      <obj_property name="ElementShortName">mult_en_o</obj_property>
+      <obj_property name="ObjectShortName">mult_en_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/div_en_o" type="logic">
+      <obj_property name="ElementShortName">div_en_o</obj_property>
+      <obj_property name="ObjectShortName">div_en_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/mult_sel_o" type="logic">
+      <obj_property name="ElementShortName">mult_sel_o</obj_property>
+      <obj_property name="ObjectShortName">mult_sel_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/div_sel_o" type="logic">
+      <obj_property name="ElementShortName">div_sel_o</obj_property>
+      <obj_property name="ObjectShortName">div_sel_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/multdiv_signed_mode_o" type="array">
+      <obj_property name="ElementShortName">multdiv_signed_mode_o[1:0]</obj_property>
+      <obj_property name="ObjectShortName">multdiv_signed_mode_o[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_a_mux_sel_o" type="other">
+      <obj_property name="ElementShortName">imm_a_mux_sel_o</obj_property>
+      <obj_property name="ObjectShortName">imm_a_mux_sel_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/imm_b_mux_sel_o" type="array">
+      <obj_property name="ElementShortName">imm_b_mux_sel_o[2:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_b_mux_sel_o[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/alu_operator_o" type="array">
+      <obj_property name="ElementShortName">alu_operator_o[6:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_operator_o[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/alu_op_a_mux_sel_o" type="array">
+      <obj_property name="ElementShortName">alu_op_a_mux_sel_o[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op_a_mux_sel_o[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/ibex_decoder/alu_op_b_mux_sel_o" type="other">
+      <obj_property name="ElementShortName">alu_op_b_mux_sel_o</obj_property>
+      <obj_property name="ObjectShortName">alu_op_b_mux_sel_o</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider405">
+      <obj_property name="label">DEC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/raddr0" type="array">
+      <obj_property name="ElementShortName">raddr0[4:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr0[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/exu/i_alu/result" type="array">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/i0_inst_x" type="array">
+      <obj_property name="ElementShortName">i0_inst_x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i0_inst_x[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/exu/alu_result_x" type="array">
+      <obj_property name="ElementShortName">alu_result_x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result_x[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/exu/mul_result_x" type="array">
+      <obj_property name="ElementShortName">mul_result_x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mul_result_x[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/exu/mul_valid_x" type="logic">
+      <obj_property name="ElementShortName">mul_valid_x</obj_property>
+      <obj_property name="ObjectShortName">mul_valid_x</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/exu/exu_i0_result_x" type="array">
+      <obj_property name="ElementShortName">exu_i0_result_x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">exu_i0_result_x[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/exu_div_result" type="array">
+      <obj_property name="ElementShortName">exu_div_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">exu_div_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/exu_div_wren" type="logic">
+      <obj_property name="ElementShortName">exu_div_wren</obj_property>
+      <obj_property name="ObjectShortName">exu_div_wren</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/exu_i0_result_x" type="array">
+      <obj_property name="ElementShortName">exu_i0_result_x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">exu_i0_result_x[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/exu_i0_result_x" type="array">
+      <obj_property name="ElementShortName">exu_i0_result_x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">exu_i0_result_x[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/dec_csr_wraddr_r" type="array">
+      <obj_property name="ElementShortName">dec_csr_wraddr_r[11:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_csr_wraddr_r[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/dec_csr_wrdata_r" type="array">
+      <obj_property name="ElementShortName">dec_csr_wrdata_r[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_csr_wrdata_r[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/csr_read" type="logic">
+      <obj_property name="ElementShortName">csr_read</obj_property>
+      <obj_property name="ObjectShortName">csr_read</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/csr_write" type="logic">
+      <obj_property name="ElementShortName">csr_write</obj_property>
+      <obj_property name="ObjectShortName">csr_write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/i0_result_r_raw" type="array">
+      <obj_property name="ElementShortName">i0_result_r_raw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i0_result_r_raw[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/decode/i0_pc_wb" type="array">
+      <obj_property name="ElementShortName">i0_pc_wb[31:1]</obj_property>
+      <obj_property name="ObjectShortName">i0_pc_wb[31:1]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/raddr0" type="array">
+      <obj_property name="ElementShortName">raddr0[4:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr0[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/raddr1" type="array">
+      <obj_property name="ElementShortName">raddr1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr1[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/wen0" type="logic">
+      <obj_property name="ElementShortName">wen0</obj_property>
+      <obj_property name="ObjectShortName">wen0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/waddr0" type="array">
+      <obj_property name="ElementShortName">waddr0[4:0]</obj_property>
+      <obj_property name="ObjectShortName">waddr0[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/wd0" type="array">
+      <obj_property name="ElementShortName">wd0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wd0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/wen1" type="logic">
+      <obj_property name="ElementShortName">wen1</obj_property>
+      <obj_property name="ObjectShortName">wen1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/waddr1" type="array">
+      <obj_property name="ElementShortName">waddr1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">waddr1[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/wd1" type="array">
+      <obj_property name="ElementShortName">wd1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wd1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/wen2" type="logic">
+      <obj_property name="ElementShortName">wen2</obj_property>
+      <obj_property name="ObjectShortName">wen2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/waddr2" type="array">
+      <obj_property name="ElementShortName">waddr2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">waddr2[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/wd2" type="array">
+      <obj_property name="ElementShortName">wd2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wd2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider826">
+      <obj_property name="label">REGISTER FILE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/rst_l" type="logic">
+      <obj_property name="ElementShortName">rst_l</obj_property>
+      <obj_property name="ObjectShortName">rst_l</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/rd0" type="array">
+      <obj_property name="ElementShortName">rd0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/rd1" type="array">
+      <obj_property name="ElementShortName">rd1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/rvtop/veer/dec/arf/gpr_out" type="array">
+      <obj_property name="ElementShortName">gpr_out[31:1][31:0]</obj_property>
+      <obj_property name="ObjectShortName">gpr_out[31:1][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider119">
+      <obj_property name="label">ACCELERATOR_TOP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_clk_i" type="logic">
+      <obj_property name="ElementShortName">wb_clk_i</obj_property>
+      <obj_property name="ObjectShortName">wb_clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_rst_i" type="logic">
+      <obj_property name="ElementShortName">wb_rst_i</obj_property>
+      <obj_property name="ObjectShortName">wb_rst_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_stb_i" type="logic">
+      <obj_property name="ElementShortName">wb_stb_i</obj_property>
+      <obj_property name="ObjectShortName">wb_stb_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_cyc_i" type="logic">
+      <obj_property name="ElementShortName">wb_cyc_i</obj_property>
+      <obj_property name="ObjectShortName">wb_cyc_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_sel_i" type="array">
+      <obj_property name="ElementShortName">wb_sel_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_sel_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_ack_o" type="logic">
+      <obj_property name="ElementShortName">wb_ack_o</obj_property>
+      <obj_property name="ObjectShortName">wb_ack_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_we_i" type="logic">
+      <obj_property name="ElementShortName">wb_we_i</obj_property>
+      <obj_property name="ObjectShortName">wb_we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_adr_i" type="array">
+      <obj_property name="ElementShortName">wb_adr_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_adr_i[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_dat_i" type="array">
+      <obj_property name="ElementShortName">wb_dat_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_dat_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_dat_o" type="array">
+      <obj_property name="ElementShortName">wb_dat_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_dat_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/int_o" type="logic">
+      <obj_property name="ElementShortName">int_o</obj_property>
+      <obj_property name="ObjectShortName">int_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_data_reg_out" type="array">
+      <obj_property name="ElementShortName">wb_data_reg_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_data_reg_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_dat8_o" type="array">
+      <obj_property name="ElementShortName">wb_dat8_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_dat8_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_data_reg_in" type="array">
+      <obj_property name="ElementShortName">wb_data_reg_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_data_reg_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/wb_adr_int" type="array">
+      <obj_property name="ElementShortName">wb_adr_int[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_adr_int[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/we_o" type="logic">
+      <obj_property name="ElementShortName">we_o</obj_property>
+      <obj_property name="ObjectShortName">we_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/re_o" type="logic">
+      <obj_property name="ElementShortName">re_o</obj_property>
+      <obj_property name="ObjectShortName">re_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/overflow" type="logic">
+      <obj_property name="ElementShortName">overflow</obj_property>
+      <obj_property name="ObjectShortName">overflow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/reg_a" type="array">
+      <obj_property name="ElementShortName">reg_a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_a[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/reg_b" type="array">
+      <obj_property name="ElementShortName">reg_b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_b[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/reg_result" type="array">
+      <obj_property name="ElementShortName">reg_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/SIM" type="array">
+      <obj_property name="ElementShortName">SIM[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SIM[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/accelerator_top/debug" type="array">
+      <obj_property name="ElementShortName">debug[31:0]</obj_property>
+      <obj_property name="ObjectShortName">debug[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider190">
+      <obj_property name="label">GPIO_MODULE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_clk_i" type="logic">
+      <obj_property name="ElementShortName">wb_clk_i</obj_property>
+      <obj_property name="ObjectShortName">wb_clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_rst_i" type="logic">
+      <obj_property name="ElementShortName">wb_rst_i</obj_property>
+      <obj_property name="ObjectShortName">wb_rst_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_stb_i" type="logic">
+      <obj_property name="ElementShortName">wb_stb_i</obj_property>
+      <obj_property name="ObjectShortName">wb_stb_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_cyc_i" type="logic">
+      <obj_property name="ElementShortName">wb_cyc_i</obj_property>
+      <obj_property name="ObjectShortName">wb_cyc_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_we_i" type="logic">
+      <obj_property name="ElementShortName">wb_we_i</obj_property>
+      <obj_property name="ObjectShortName">wb_we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_ack" type="logic">
+      <obj_property name="ElementShortName">wb_ack</obj_property>
+      <obj_property name="ObjectShortName">wb_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_err" type="logic">
+      <obj_property name="ElementShortName">wb_err</obj_property>
+      <obj_property name="ObjectShortName">wb_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_inta" type="logic">
+      <obj_property name="ElementShortName">wb_inta</obj_property>
+      <obj_property name="ObjectShortName">wb_inta</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_dat" type="array">
+      <obj_property name="ElementShortName">wb_dat[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_dat[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_ack_o" type="logic">
+      <obj_property name="ElementShortName">wb_ack_o</obj_property>
+      <obj_property name="ObjectShortName">wb_ack_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_err_o" type="logic">
+      <obj_property name="ElementShortName">wb_err_o</obj_property>
+      <obj_property name="ObjectShortName">wb_err_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_inta_o" type="logic">
+      <obj_property name="ElementShortName">wb_inta_o</obj_property>
+      <obj_property name="ObjectShortName">wb_inta_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_dat_o" type="array">
+      <obj_property name="ElementShortName">wb_dat_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_dat_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_adr_i" type="array">
+      <obj_property name="ElementShortName">wb_adr_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_adr_i[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_dat_i" type="array">
+      <obj_property name="ElementShortName">wb_dat_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_dat_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/wb_sel_i" type="array">
+      <obj_property name="ElementShortName">wb_sel_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_sel_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/aux_i" type="array">
+      <obj_property name="ElementShortName">aux_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">aux_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/ext_pad_i" type="array">
+      <obj_property name="ElementShortName">ext_pad_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_pad_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/clk_pad_i" type="logic">
+      <obj_property name="ElementShortName">clk_pad_i</obj_property>
+      <obj_property name="ObjectShortName">clk_pad_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/ext_padoe_o" type="array">
+      <obj_property name="ElementShortName">ext_padoe_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_padoe_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_in" type="array">
+      <obj_property name="ElementShortName">rgpio_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_out" type="array">
+      <obj_property name="ElementShortName">rgpio_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_oe" type="array">
+      <obj_property name="ElementShortName">rgpio_oe[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_oe[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_inte" type="array">
+      <obj_property name="ElementShortName">rgpio_inte[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_inte[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_ptrig" type="array">
+      <obj_property name="ElementShortName">rgpio_ptrig[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_ptrig[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_aux" type="array">
+      <obj_property name="ElementShortName">rgpio_aux[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_aux[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_ctrl" type="array">
+      <obj_property name="ElementShortName">rgpio_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_ctrl[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_ints" type="array">
+      <obj_property name="ElementShortName">rgpio_ints[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_ints[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_eclk" type="array">
+      <obj_property name="ElementShortName">rgpio_eclk[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_eclk[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_nec" type="array">
+      <obj_property name="ElementShortName">rgpio_nec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rgpio_nec[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/sync" type="array">
+      <obj_property name="ElementShortName">sync[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sync[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/ext_pad_s" type="array">
+      <obj_property name="ElementShortName">ext_pad_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_pad_s[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_out_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_out_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_out_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_oe_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_oe_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_oe_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_inte_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_inte_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_inte_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_ptrig_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_ptrig_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_ptrig_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_aux_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_aux_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_aux_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_ctrl_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_ctrl_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_ctrl_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_ints_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_ints_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_ints_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_eclk_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_eclk_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_eclk_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/rgpio_nec_sel" type="logic">
+      <obj_property name="ElementShortName">rgpio_nec_sel</obj_property>
+      <obj_property name="ObjectShortName">rgpio_nec_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/full_decoding" type="logic">
+      <obj_property name="ElementShortName">full_decoding</obj_property>
+      <obj_property name="ObjectShortName">full_decoding</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/in_muxed" type="array">
+      <obj_property name="ElementShortName">in_muxed[31:0]</obj_property>
+      <obj_property name="ObjectShortName">in_muxed[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/out_pad" type="array">
+      <obj_property name="ElementShortName">out_pad[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out_pad[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/ext_pad_o" type="array">
+      <obj_property name="ElementShortName">ext_pad_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_pad_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/extc_in" type="array">
+      <obj_property name="ElementShortName">extc_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">extc_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/pext_clk" type="array">
+      <obj_property name="ElementShortName">pext_clk[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pext_clk[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/pextc_sampled" type="array">
+      <obj_property name="ElementShortName">pextc_sampled[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pextc_sampled[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/nextc_sampled" type="array">
+      <obj_property name="ElementShortName">nextc_sampled[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nextc_sampled[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/sync_clk" type="logic">
+      <obj_property name="ElementShortName">sync_clk</obj_property>
+      <obj_property name="ObjectShortName">sync_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/clk_s" type="logic">
+      <obj_property name="ElementShortName">clk_s</obj_property>
+      <obj_property name="ObjectShortName">clk_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/clk_r" type="logic">
+      <obj_property name="ElementShortName">clk_r</obj_property>
+      <obj_property name="ObjectShortName">clk_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/pedge" type="logic">
+      <obj_property name="ElementShortName">pedge</obj_property>
+      <obj_property name="ObjectShortName">pedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/nedge" type="logic">
+      <obj_property name="ElementShortName">nedge</obj_property>
+      <obj_property name="ObjectShortName">nedge</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/pedge_vec" type="array">
+      <obj_property name="ElementShortName">pedge_vec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pedge_vec[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/nedge_vec" type="array">
+      <obj_property name="ElementShortName">nedge_vec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nedge_vec[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/in_lach" type="array">
+      <obj_property name="ElementShortName">in_lach[31:0]</obj_property>
+      <obj_property name="ObjectShortName">in_lach[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/dw" type="array">
+      <obj_property name="ElementShortName">dw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dw[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/aw" type="array">
+      <obj_property name="ElementShortName">aw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">aw[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/gpio_module/gw" type="array">
+      <obj_property name="ElementShortName">gw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">gw[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider242">
+      <obj_property name="label">AXI2WB</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_clk" type="logic">
+      <obj_property name="ElementShortName">i_clk</obj_property>
+      <obj_property name="ObjectShortName">i_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_rst" type="logic">
+      <obj_property name="ElementShortName">i_rst</obj_property>
+      <obj_property name="ObjectShortName">i_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_awaddr" type="array">
+      <obj_property name="ElementShortName">i_awaddr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_awaddr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_awvalid" type="logic">
+      <obj_property name="ElementShortName">i_awvalid</obj_property>
+      <obj_property name="ObjectShortName">i_awvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_awready" type="logic">
+      <obj_property name="ElementShortName">o_awready</obj_property>
+      <obj_property name="ObjectShortName">o_awready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_awid" type="array">
+      <obj_property name="ElementShortName">i_awid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">i_awid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider243">
+      <obj_property name="label">AXI READ</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_araddr" type="array">
+      <obj_property name="ElementShortName">i_araddr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_araddr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_arvalid" type="logic">
+      <obj_property name="ElementShortName">i_arvalid</obj_property>
+      <obj_property name="ObjectShortName">i_arvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_arready" type="logic">
+      <obj_property name="ElementShortName">o_arready</obj_property>
+      <obj_property name="ObjectShortName">o_arready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_arid" type="array">
+      <obj_property name="ElementShortName">i_arid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">i_arid[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider244">
+      <obj_property name="label">WISHBONE READ</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wb_stb" type="logic">
+      <obj_property name="ElementShortName">o_wb_stb</obj_property>
+      <obj_property name="ObjectShortName">o_wb_stb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wb_cyc" type="logic">
+      <obj_property name="ElementShortName">o_wb_cyc</obj_property>
+      <obj_property name="ObjectShortName">o_wb_cyc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wb_we" type="logic">
+      <obj_property name="ElementShortName">o_wb_we</obj_property>
+      <obj_property name="ObjectShortName">o_wb_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_wb_ack" type="logic">
+      <obj_property name="ElementShortName">i_wb_ack</obj_property>
+      <obj_property name="ObjectShortName">i_wb_ack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wb_adr" type="array">
+      <obj_property name="ElementShortName">o_wb_adr[15:2]</obj_property>
+      <obj_property name="ObjectShortName">o_wb_adr[15:2]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_wdata" type="array">
+      <obj_property name="ElementShortName">i_wdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">i_wdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wready" type="logic">
+      <obj_property name="ElementShortName">o_wready</obj_property>
+      <obj_property name="ObjectShortName">o_wready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_wvalid" type="logic">
+      <obj_property name="ElementShortName">i_wvalid</obj_property>
+      <obj_property name="ObjectShortName">i_wvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_wstrb" type="array">
+      <obj_property name="ElementShortName">i_wstrb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_wstrb[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_bresp" type="array">
+      <obj_property name="ElementShortName">o_bresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">o_bresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_bid" type="array">
+      <obj_property name="ElementShortName">o_bid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">o_bid[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_bvalid" type="logic">
+      <obj_property name="ElementShortName">o_bvalid</obj_property>
+      <obj_property name="ObjectShortName">o_bvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_bready" type="logic">
+      <obj_property name="ElementShortName">i_bready</obj_property>
+      <obj_property name="ObjectShortName">i_bready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_rdata" type="array">
+      <obj_property name="ElementShortName">o_rdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">o_rdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_rvalid" type="logic">
+      <obj_property name="ElementShortName">o_rvalid</obj_property>
+      <obj_property name="ObjectShortName">o_rvalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_rready" type="logic">
+      <obj_property name="ElementShortName">i_rready</obj_property>
+      <obj_property name="ObjectShortName">i_rready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_rid" type="array">
+      <obj_property name="ElementShortName">o_rid[5:0]</obj_property>
+      <obj_property name="ObjectShortName">o_rid[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_rresp" type="array">
+      <obj_property name="ElementShortName">o_rresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">o_rresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_rlast" type="logic">
+      <obj_property name="ElementShortName">o_rlast</obj_property>
+      <obj_property name="ObjectShortName">o_rlast</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/hi_32b_w" type="logic">
+      <obj_property name="ElementShortName">hi_32b_w</obj_property>
+      <obj_property name="ObjectShortName">hi_32b_w</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/arbiter" type="logic">
+      <obj_property name="ElementShortName">arbiter</obj_property>
+      <obj_property name="ObjectShortName">arbiter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/wb_rdt_low" type="array">
+      <obj_property name="ElementShortName">wb_rdt_low[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_rdt_low[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/cs" type="array">
+      <obj_property name="ElementShortName">cs[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cs[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wb_dat" type="array">
+      <obj_property name="ElementShortName">o_wb_dat[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_wb_dat[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/o_wb_sel" type="array">
+      <obj_property name="ElementShortName">o_wb_sel[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_wb_sel[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_wb_rdt" type="array">
+      <obj_property name="ElementShortName">i_wb_rdt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_wb_rdt[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/i_wb_err" type="logic">
+      <obj_property name="ElementShortName">i_wb_err</obj_property>
+      <obj_property name="ObjectShortName">i_wb_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/aw_req" type="logic">
+      <obj_property name="ElementShortName">aw_req</obj_property>
+      <obj_property name="ObjectShortName">aw_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/w_req" type="logic">
+      <obj_property name="ElementShortName">w_req</obj_property>
+      <obj_property name="ObjectShortName">w_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/ar_req" type="logic">
+      <obj_property name="ElementShortName">ar_req</obj_property>
+      <obj_property name="ObjectShortName">ar_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/AW" type="array">
+      <obj_property name="ElementShortName">AW[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AW[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/IW" type="array">
+      <obj_property name="ElementShortName">IW[31:0]</obj_property>
+      <obj_property name="ObjectShortName">IW[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/STATESIZE" type="array">
+      <obj_property name="ElementShortName">STATESIZE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">STATESIZE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/IDLE" type="array">
+      <obj_property name="ElementShortName">IDLE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">IDLE[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/AWACK" type="array">
+      <obj_property name="ElementShortName">AWACK[3:0]</obj_property>
+      <obj_property name="ObjectShortName">AWACK[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/WBWACK" type="array">
+      <obj_property name="ElementShortName">WBWACK[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WBWACK[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/WBRACK1" type="array">
+      <obj_property name="ElementShortName">WBRACK1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WBRACK1[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/WBR2" type="array">
+      <obj_property name="ElementShortName">WBR2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WBR2[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/WBRACK2" type="array">
+      <obj_property name="ElementShortName">WBRACK2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WBRACK2[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/BAXI" type="array">
+      <obj_property name="ElementShortName">BAXI[3:0]</obj_property>
+      <obj_property name="ObjectShortName">BAXI[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/rvfpgasim_fpga/rvfpganexys/swervolf/axi2wb/RRAXI" type="array">
+      <obj_property name="ElementShortName">RRAXI[3:0]</obj_property>
+      <obj_property name="ObjectShortName">RRAXI[3:0]</obj_property>
+   </wvobject>
+</wave_config>

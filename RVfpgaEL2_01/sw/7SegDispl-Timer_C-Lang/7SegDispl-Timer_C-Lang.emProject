@@ -1,0 +1,105 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="7SegDispl-Timer_C-Lang" target="20" version="2">
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    debug_target_connection="J-Link"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="Level 2 balanced"
+    linker_memory_map_file="$(ProjectDir)/Setup/SweRV_EL2_MemoryMap.xml"
+    linker_output_format="bin"
+    rv_abi="ilp32"
+    rv_architecture="rv32imac" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 2"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 2 balanced" />
+  <project Name="7SegDispl-Timer_C-Lang">
+    <configuration
+      LIBRARY_IO_TYPE="None"
+      Name="Common"
+      RISCV_TOOLCHAIN_VARIANT="Standard"
+      arm_compiler_variant="SEGGER"
+      arm_linker_heap_size="2048"
+      arm_linker_stack_size="2048"
+      arm_linker_variant="SEGGER"
+      build_generic_options_file_name=""
+      link_linker_script_file="Setup/SEGGER_RAM_RV32.icf"
+      linker_output_format="hex"
+      linker_section_placements_segments="FLASH1 RX 0x00000000 0x00100000;RAM1 RWX 0x20000000 0x00010000"
+      project_directory=""
+      project_type="Executable"
+      rv_abi="ilp32"
+      rv_arch_ext=""
+      rv_arch_zicsr="Yes"
+      rv_arch_zifencei="Yes"
+      rv_architecture="rv32ima"
+      rv_debug_extensions="None"
+      rv_toolchain_prefix=""
+      target_device_name="RISC-V" />
+    <configuration
+      LIBRARY_IO_TYPE="None"
+      Name="Debug"
+      adaptive="No"
+      c_preprocessor_definitions="D_NEXYS_A7;D_SWERV_EH1;D_SWERV_EL2;D_TICK_TIME_MS=4;D_ISR_STACK_SIZE=400;D_MTIME_ADDRESS=0x80001020;D_MTIMECMP_ADDRESS=0x80001028;D_CLOCK_RATE=12902400;D_PIC_BASE_ADDRESS=0xF00C0000;D_PIC_NUM_OF_EXT_INTERRUPTS=256;D_EXT_INTERRUPT_FIRST_SOURCE_USED=0;D_EXT_INTERRUPT_LAST_SOURCE_USED=255;D_EXT_INTS_GENERATION_REG_ADDRESS=0x8000100B;D_TIMER_DURATION_SETUP_ADDRESS=0x80001030;D_TIMER_ACTIVATION_ADDRESS=0x80001034;D_NMI_VEC_ADDRESSS=0x8000100C;D_BARE_METAL"
+      c_user_include_directories=".;..\\..\\framework-wd-riscv-sdk\\psp_EL2\\api_inc;..\\..\\framework-wd-riscv-sdk\\board\\nexys_a7_el2\\bsp"
+      gcc_debugging_level="Level 3"
+      gcc_optimization_level="None"
+      link_linker_script_file="$(ProjectDir)/Setup/SEGGER_RAM_RV32.icf"
+      link_time_optimization="No"
+      linker_memory_map_file="$(ProjectDir)/Setup/SweRV_EL2_MemoryMap.xml"
+      linker_output_format="bin"
+      linker_section_placements_segments="RAM1 RWX 0x20000000 0x00001000"
+      rv_architecture="rv32i"
+      speed="5000" />
+    <configuration
+      Name="Release"
+      c_preprocessor_definitions="D_NEXYS_A7;D_SWERV_EH1;D_SWERV_EL2;D_MTIME_ADDRESS=0x80001020;D_MTIMECMP_ADDRESS=0x80001028;D_CLOCK_RATE=50000000;D_PIC_BASE_ADDRESS=0xf00c0000;D_PIC_NUM_OF_EXT_INTERRUPTS=256;D_EXT_INTERRUPT_FIRST_SOURCE_USED=0;D_EXT_INTERRUPT_LAST_SOURCE_USED=255;D_EXT_INTS_GENERATION_REG_ADDRESS=0x8000100B;D_TIMER_DURATION_SETUP_ADDRESS=0x80001030;D_TIMER_ACTIVATION_ADDRESS=0x80001034;D_NMI_VEC_ADDRESSS=0x8000100C;D_ISR_STACK_SIZE=400;D_BARE_METAL;D_TICK_TIME_MS=4"
+      c_system_include_directories="$(StudioIncDir:$(StudioDir)/include);.;../../framework-wd-riscv-sdk/board/nexys_a7_eh1/bsp;../../framework-wd-riscv-sdk/psp/api_inc"
+      linker_memory_map_file="$(ProjectDir)/Setup/SweRV_EL2_MemoryMap.xml" />
+    <folder Name="framework-wd-riscv-sdk">
+      <folder Name="board">
+        <folder Name="nexys_a7_el2">
+          <folder Name="bsp">
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_external_interrupts.c" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_external_interrupts.h" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_mem_map.h" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_printf.c" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_printf.h" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_timer.c" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_timer.h" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_version.c" />
+            <file file_name="../../framework-wd-riscv-sdk/board/nexys_a7_el2/bsp/bsp_version.h" />
+          </folder>
+        </folder>
+      </folder>
+      <folder Name="psp">
+        <folder Name="api_inc" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_cache_control_eh1.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_corr_err_cnt_eh1.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_ext_interrupts_eh1.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_int_vect_eh1.S" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_internal_timers_el2.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_interrupts_el2.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_memory_utils.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_nmi_el2.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_performance_monitor_el2.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_pmc_eh1.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_timers.c" />
+        <file file_name="../../framework-wd-riscv-sdk/psp_EL2/psp_version.c" />
+      </folder>
+    </folder>
+    <folder Name="Setup">
+      <file file_name="Setup/SEGGER_RAM_RV32.icf" />
+    </folder>
+    <folder Name="Source">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <file file_name="Source/7SegDispl-Timer_C-Lang.c" />
+    </folder>
+    <folder Name="System">
+      <file file_name="System/SEGGER_RV32_crt0.s" />
+    </folder>
+  </project>
+</solution>

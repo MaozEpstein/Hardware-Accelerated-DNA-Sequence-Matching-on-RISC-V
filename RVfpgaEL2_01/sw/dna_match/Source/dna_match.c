@@ -23,35 +23,35 @@
 #define NUM_OF_REFS 8
 
 /* ======================================================================== */
-/*  Hardware accelerator interface (DNA Smith-Waterman systolic engine)     */
+/*  Interface to the hardware accelerator (DNA Smith-Waterman systolic core) */
 /*                                                                          */
-/*  Define USE_ACCELERATOR to offload the scoring to the FPGA accelerator.  */
-/*  Comment it out to fall back to the pure-software reference below        */
-/*  (identical results -> useful as a cross-check / safe rollback).         */
+/*  Enable USE_ACCELERATOR to hand the scoring work over to the FPGA core.  */
+/*  Leave it commented out to use the plain-software version further down    */
+/*  (same results -> handy as a sanity check / safe fallback).              */
 /* ======================================================================== */
 #define USE_ACCELERATOR
 
 #ifdef USE_ACCELERATOR
 
-/* Memory-mapped registers (base 0x80001300, matches accelerator_regs.sv).   */
-/* Idea B: the host sends RAW ASCII; each 16-base sequence is 4 words of 4    */
-/* ASCII bytes, and the accelerator decodes them in hardware.  No software    */
-/* encoding is performed at all.                                              */
+/* Memory-mapped registers (base 0x80001300, lines up with accelerator_regs.sv).*/
+/* Idea B: the CPU ships RAW ASCII; every 16-base sequence is 4 words of 4     */
+/* ASCII bytes, and the decoding happens inside the accelerator.  The software */
+/* does no encoding whatsoever.                                               */
 #define ACCEL_REG_CONTROL   0x80001300u   /* w: bit0=GO   r: bit31=DONE        */
 #define ACCEL_REG_QUERY0    0x80001304u   /* query ASCII bytes 0..3            */
 #define ACCEL_REG_REF0      0x80001314u   /* ref   ASCII bytes 0..3            */
 #define ACCEL_REG_RESULT    0x80001324u   /* best local-alignment score        */
-/* QUERYg = QUERY0 + 4*g , REFg = REF0 + 4*g  (g = 0..3); REF3 write auto-starts */
+/* QUERYg = QUERY0 + 4*g , REFg = REF0 + 4*g  (g = 0..3); the REF3 write kicks off the run */
 
 #define ACCEL_DONE_BIT      0x80000000u
 
 #define ACCEL_RD(addr)        (*(volatile unsigned *)(addr))
 #define ACCEL_WR(addr, value) do { (*(volatile unsigned *)(addr)) = (unsigned)(value); } while (0)
 
-/* Send a 16-byte sequence as 4 raw-ASCII words to consecutive registers.     */
-/* The sequence stays in its TCM array; we only move the bytes (no encoding). */
-/* Reads are 4-byte aligned (the query/reference arrays are aligned(4)), so    */
-/* these are plain word loads.  Writing the 4th REF word auto-starts the run.  */
+/* Push a 16-byte sequence as 4 raw-ASCII words into consecutive registers.   */
+/* The sequence lives in its TCM array; we just copy the bytes (no encoding).  */
+/* Because the query/reference arrays are aligned(4), the reads land on 4-byte */
+/* boundaries -> plain word loads.  The 4th REF word fires off the run.        */
 static inline void accel_send4(unsigned base_addr, const char *seq)
 {
     const unsigned *w = (const unsigned *)seq;
@@ -61,14 +61,14 @@ static inline void accel_send4(unsigned base_addr, const char *seq)
     ACCEL_WR(base_addr + 0xCu, w[3]);
 }
 
-/* Offload one reference to the accelerator and return its score.            */
-/* The query is loaded once by the caller (it is stationary in the array).   */
+/* Hand a single reference to the accelerator and read back its score.       */
+/* The caller loads the query just once (it stays put in the array).         */
 static inline int smith_waterman_accel(const char *ref)
 {
     accel_send4(ACCEL_REG_REF0, ref);        /* 4 raw words; REF3 auto-starts  */
 
-    /* polling DONE is required: accelerator_wb acks a read in ~4 cycles while */
-    /* the systolic run takes longer, so an immediate read would be partial.  */
+    /* we must poll DONE: accelerator_wb acknowledges a read in ~4 cycles, but */
+    /* the systolic run needs longer, so reading right away would be premature. */
     while ((ACCEL_RD(ACCEL_REG_CONTROL) & ACCEL_DONE_BIT) == 0)
         ;
 
@@ -128,7 +128,7 @@ int smith_waterman_affine(
                 s = MISMATCH;
 
             /* -------------------------- */
-            /* Insertion matrix           */
+            /* Insertion (gap-in-ref)     */
             /* -------------------------- */
 
             I[i][j] =
@@ -137,7 +137,7 @@ int smith_waterman_affine(
                     I[i-1][j] + GAP_EXT);
 
             /* -------------------------- */
-            /* Deletion matrix            */
+            /* Deletion (gap-in-query)    */
             /* -------------------------- */
 
             D[i][j] =
@@ -146,7 +146,7 @@ int smith_waterman_affine(
                     D[i][j-1] + GAP_EXT);
 
             /* -------------------------- */
-            /* Match matrix               */
+            /* Match / alignment score    */
             /* -------------------------- */
 
             M[i][j] =
@@ -166,8 +166,8 @@ int smith_waterman_affine(
 
 int main(void)
 {
-    /* aligned(4) so the accelerator driver can move each sequence as 4 raw    */
-    /* 32-bit words (the input stays in these TCM arrays - no encoding).        */
+    /* aligned(4) lets the accelerator driver ship each sequence as 4 raw      */
+    /* 32-bit words (the data stays in these TCM arrays - no encoding needed).  */
     static const char query[20] __attribute__((aligned(4))) =
         "ACGTCGTACGTACGTA";
 
@@ -186,7 +186,7 @@ int main(void)
     };
 
 
-    // read time here
+    // capture the start cycle count here
    int cyc_beg, cyc_end;
 
    pspMachinePerfMonitorEnableAll();
@@ -195,8 +195,8 @@ int main(void)
 
 
 #ifdef USE_ACCELERATOR
-    /* Load the stationary query once (4 raw words), then stream each         */
-    /* reference through the systolic accelerator.                            */
+    /* Load the stationary query a single time (4 raw words), then feed each   */
+    /* reference one by one through the systolic accelerator.                  */
     accel_send4(ACCEL_REG_QUERY0, query);
 
     for(int i=0;i<NUM_OF_REFS;i++)
@@ -215,7 +215,7 @@ int main(void)
 #endif
 
 
-    // read timer here and print execution time
+    // grab the end cycle count and report the elapsed time
    cyc_end = pspMachinePerfCounterGet(D_PSP_COUNTER0);
 
    printf("Cycles = %d\n", cyc_end-cyc_beg);

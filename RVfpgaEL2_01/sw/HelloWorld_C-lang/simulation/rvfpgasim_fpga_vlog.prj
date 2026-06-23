@@ -1,0 +1,213 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/OtherSources/verilog-arbiter_0-r3/src/arbiter.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiToWb/axi2wb.v" \
+"../../../../../rtl/OtherSources/axi_ram.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/cdc_utils_0.1-r1/rtl/verilog/cc561.v" \
+"../../../../../rtl/OtherSources/clk_gen_nexys.v" \
+"../../../../../rtl/VeeRwolf/BootROM/dpram64.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/spi/fifo4.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/gpio/gpio_top.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/ptc/ptc_top.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/spi/simple_spi_top.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/cdc_utils_0.1-r1/rtl/verilog/sync2_pgen.v" \
+"../../../../../rtl/VeeRwolf/veerwolf_core.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/wb_intercon_1.2.2-r1/rtl/verilog/wb_arbiter.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/wb_intercon_1.2.2-r1/rtl/verilog/wb_cdc.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/wb_intercon_1.2.2-r1/rtl/verilog/wb_data_resize.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/wb_intercon.v" \
+"../../../../../rtl/VeeRwolf/BootROM/wb_mem_wrapper.v" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/wb_intercon_1.2.2-r1/rtl/verilog/wb_mux.v" \
+
+sv xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/cf_math_pkg.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/addr_decode.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_pkg.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_atop_filter.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_burst_splitter.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_cdc.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_cut.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_delayer.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_demux.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_dw_converter.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_dw_downsizer.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_dw_upsizer.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_err_slv.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_id_prepend.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/axi_intercon.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_intf.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_isolate.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_join.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_demux.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_join.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_mailbox.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_mux.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_regs.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_to_apb.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_to_axi.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_lite_xbar.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_modify_address.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_multicut.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_mux.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_serializer.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_to_axi_lite.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/src/axi_xbar.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lib/beh_lib.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/binary_to_gray.sv" \
+"../../../../../rtl/OtherSources/bscan_tap.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/cb_filter_pkg.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/cb_filter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/cdc_2phase.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/cdc_fifo_2phase.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/cdc_fifo_gray.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/clk_div.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/clock_divider.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/clock_divider_counter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/counter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/delta_counter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/ecc_pkg.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/ecc_decode.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/ecc_encode.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/edge_detect.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/edge_propagator.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/edge_propagator_rx.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/edge_propagator_tx.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/el2_def.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_ic_mem.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_iccm_mem.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_dccm_mem.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/el2_mem.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/exp_backoff.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/fall_through_register.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/fifo_v1.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/fifo_v2.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/fifo_v3.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/find_first_one.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/generic_LFSR_8bit.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/generic_fifo.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/gray_to_binary.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/id_queue.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/isochronous_spill_register.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/lfsr.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/lfsr_16bit.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/lfsr_8bit.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/lzc.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/max_counter.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lib/mem_lib.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/mv_filter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/onehot_to_bin.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/plru_tree.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/popcount.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/prioarbiter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/pulp_sync.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/pulp_sync_wedge.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/rr_arb_tree.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/deprecated/rrarbiter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/rstgen.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/rstgen_bypass.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/serial_deglitch.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/shift_reg.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/spill_register.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_arbiter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_arbiter_flushable.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_delay.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_demux.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_fifo.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_filter.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_fork.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_fork_dynamic.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_join.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_mux.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_omega_net.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_register.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_to_mem.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_xbar.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/sub_per_hash.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/sync.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/sync_wedge.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/unread.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/veer_el2_wrapper.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/SystemController/SevenSegDecoder.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/SystemController/SevSegDisplays_Controller.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/SystemController/SystemControllerMisc.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/SystemController/wb_module.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/SystemController/veerwolf_syscon.sv" \
+"../../../../../rtl/rvfpganexys.sv" \
+"../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/src/stream_intf.sv" \
+"../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect/wb_common_1.0.3/wb_common_params.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/timer/wb_module_timer.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/timer/timer_top.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/spi_master/wb_module_spi_master.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/spi_master/spi_master.sv" \
+"../../../../../rtl/OtherSources/axi2mem.sv" \
+
+verilog xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/OtherSources/axi_mem.v" \
+
+sv xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dbg/el2_dbg.sv" \
+"../../../../../rtl/OtherSources/ibex-master/rtl/ibex_pkg.sv" \
+"../../../../../rtl/OtherSources/ibex-master/rtl/ibex_decoder.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dec/el2_dec.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dec/el2_dec_decode_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dec/el2_dec_gpr_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dec/el2_dec_ib_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dec/el2_dec_tlu_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/dec/el2_dec_trigger.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/el2_dma_ctrl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_aln_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_bp_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_compress_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_ifc_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/ifu/el2_ifu_mem_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lib/el2_lib.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_addrcheck.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_bus_buffer.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_bus_intf.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_clkdomain.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_dccm_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_ecc.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_lsc_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_stbuf.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/lsu/el2_lsu_trigger.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/el2_pic_ctrl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/el2_veer.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/exu/el2_exu_alu_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/exu/el2_exu_div_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/exu/el2_exu_mul_ctl.sv" \
+"../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/exu/el2_exu.sv" \
+
+verilog xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/OtherSources/dmi/dmi_jtag_to_core_sync.v" \
+
+sv xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/OtherSources/dmi/rvjtag_tap.sv" \
+
+verilog xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/OtherSources/dmi/dmi_wrapper.v" \
+
+sv xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton/accelerator.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton/accelerator_regs.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton/accelerator_wb.sv" \
+"../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton/accelerator_top.sv" \
+
+verilog xil_defaultlib "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/typedef.svh" "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi/assign.svh" "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include/common_defines.vh" -i "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include" -i "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect/pulp-platform.org__axi_0.25.0/include/axi" --include "../../../../../rtl/VeeRwolf/VeeR_EL2CoreComplex/include" --include "../../../../../rtl/VeeRwolf/Peripherals/gpio" --include "../../../../../rtl/VeeRwolf/Peripherals/ptc" --include "../../../../../rtl/VeeRwolf/Interconnect/WishboneInterconnect" --include "../../../../../rtl/VeeRwolf/Interconnect/AxiInterconnect" --include "../../../../../rtl/OtherSources/pulp-platform.org__common_cells_1.20.0/include/common_cells" --include "../../../../../rtl/VeeRwolf/BootROM/sw" --include "../../../../../rtl/VeeRwolf/Peripherals/accelerator_hackaton" --include "../../../../../rtl/VeeRwolf/Peripherals/uart" -d "JTAG_EXTERNAL=1" -d "XSIM=1" -d "SIMULATION=1" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/raminfr.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_receiver.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_regs.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_rfifo.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_sync_flops.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_tfifo.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_transmitter.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_wb.v" \
+"../../../../../rtl/VeeRwolf/Peripherals/uart/uart_top.v" \
+"../../../../../rtl/rvfpgasim_fpga.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

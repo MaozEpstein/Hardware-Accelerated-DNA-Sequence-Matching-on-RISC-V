@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <psp_api.h> // הכללת הספרייה הנדרשת למדידת זמנים [cite: 9, 10, 11]
+
+int main() {
+    // הגדרת משתנים לשמירת ערכי המונה [cite: 16, 18]
+    unsigned int cyc_beg, cyc_end;
+    
+    // הפעלת מונה הזמן לפני תחילת ריצת קוד החישוב [cite: 12]
+    pspMachinePerfMonitorEnableAll(); // [cite: 13]
+    pspMachinePerfCounterSet(D_PSP_COUNTER0, D_CYCLES_CLOCKS_ACTIVE); // [cite: 13]
+    
+    // קריאת ערך מונה הזמן לפני תחילת חישוב סדרת פיבונאצ'י [cite: 14, 15, 16]
+    cyc_beg = pspMachinePerfCounterGet(D_PSP_COUNTER0); // [cite: 15]
+    
+    // --- תחילת קטע החישוב (סדרת פיבונאצ'י) ---
+    int fib[12];
+    fib[0] = 0;
+    fib[1] = 1;
+    
+    printf("Fibonacci Sequence:\n");
+    printf("a[0] = %d\n", fib[0]);
+    printf("a[1] = %d\n", fib[1]);
+    
+    for (int i = 2; i < 12; i++) {
+        fib[i] = fib[i-1] + fib[i-2];
+        printf("a[%d] = %d\n", i, fib[i]);
+    }
+    // --- סיום קטע החישוב ---
+    
+    // קריאת ערך המונה שוב בסיום החישוב [cite: 17, 18]
+    cyc_end = pspMachinePerfCounterGet(D_PSP_COUNTER0); // [cite: 18]
+    
+    printf("\n");
+    
+    // הדפסת זמן הריצה נטו של החישוב [cite: 19, 20]
+    printf("Net execution time (cycles): %u\n", cyc_end - cyc_beg); // [cite: 20]
+    
+    // הדפסת פרטי הצוות
+    int num_students = 2;
+    printf("\nNumber of students in the team: %d\n", num_students);
+    printf("Team members: Maoz Epstein, Eyal alegro\n");
+    
+    return 0;
+}

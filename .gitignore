@@ -1,0 +1,39 @@
+# ---- OS / editor junk ----
+.DS_Store
+**/.DS_Store
+__MACOSX/
+**/__MACOSX/
+Thumbs.db
+desktop.ini
+
+# ---- Archives ----
+*.zip
+
+# ---- Vivado / Xilinx generated output ----
+RVfpgaEL2_01/vivado/
+RVfpgaEL2_01/wishbone_simulation/
+*.jou
+*.log
+*.str
+*.dcp
+*.bit
+*.ltx
+.Xil/
+vivado*.backup.*
+
+# ---- RISC-V SDK / toolchain (large, externally sourced) ----
+RVfpgaEL2_01/framework-wd-riscv-sdk/
+
+# ---- SEGGER Embedded Studio build artifacts ----
+RVfpgaEL2_01/sw/dna_match/Output/
+RVfpgaEL2_01/sw/**/Output/
+*.jlink
+
+# ---- Misc build/sim outputs ----
+*.o
+*.elf
+*.hex
+*.bin
+*.vcd
+*.wlf
+*.wdb
